@@ -55,10 +55,10 @@ div.bubble{
     <div id ="Date"></div>
     </center>
     </div>
-    <div class ="a bubble"><img src="bubble01.png" width="250px"/></div>
-    <div class ="b bubble"><img src="bubble02.png" width="250px"/></div>
-    <div class ="c bubble"><img src="bubble03.png" width="250px"/></div>
-    <div class ="d bubble"><img src="bubble04.png" width="250px"/></div>
+    <div class ="a bubble"><img src="bubble01.png" width="100%"/></div>
+    <div class ="b bubble"><img src="bubble02.png" width="100%"/></div>
+    <div class ="c bubble"><img src="bubble03.png" width="100%"/></div>
+    <div class ="d bubble"><img src="bubble04.png" width="100%"/></div>
 </body> 
 <script>
 
@@ -73,23 +73,23 @@ $(document).ready(function(){
 function makeNewPosition(){
     var h = $(window).height() - 50;
     var w = $(window).width() - 50;
-    
+    var s = Math.floor((Math.random() * 150)+100);
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
     
-    return [nh,nw];    
+    return [nh,nw,s];    
     
 }
 
 function animateDiv(){
     var newqa = makeNewPosition();
-    $('.a').animate({ top: newqa[0], left: newqa[1] ,opacity:0.8}, 5000);
+    $('.a').animate({ top: newqa[0], left: newqa[1] ,width: newqa[2],height: newqa[2], opacity:0.8}, 5000);
     var newqb = makeNewPosition();
-    $('.b').animate({ top: newqb[0], left: newqb[1] ,opacity:0.8}, 5000);
+    $('.b').animate({ top: newqb[0], left: newqb[1] ,width: newqb[2],height: newqb[2], opacity:0.8}, 5000);
     var newqc = makeNewPosition();
-    $('.c').animate({ top: newqc[0], left: newqc[1] ,opacity:0.8},5000);
+    $('.c').animate({ top: newqc[0], left: newqc[1] ,width: newqc[2],height: newqc[2], opacity:0.8}, 5000);
     var newqd = makeNewPosition();
-    $('.d').animate({ top: newqd[0], left: newqd[1] ,opacity:0.8}, 5000);
+    $('.d').animate({ top: newqd[0], left: newqd[1] ,width: newqd[2],height: newqd[2], opacity:0.8}, 5000);
     animateDiv();
 };
 </script>
