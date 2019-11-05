@@ -63,7 +63,7 @@ div.bubble{
         <div class ="b bubble"><img src="bubble02.png" width="100%"/></div>
         </div>
     </div>
-     <div class = "row" style ="margin-top:40%">
+     <div class = "row" style ="margin-top:20%">
         <div class = "col col-md-6">
         <div class ="c bubble"><img src="bubble03.png" width="100%"/></div>
         </div>
@@ -71,14 +71,27 @@ div.bubble{
         <div class ="d bubble"><img src="bubble04.png" width="100%"/></div>
         </div>
     </div>
+    <div class = "row" style ="margin-top:20%">
+            <div class = "col col-md-4">
+            <div class ="e bubble"><img src="bubble05.png" width="100%"/></div>
+            </div>
+            <div class = "col col-md-4" style="margin-left:35%">
+            <div class ="f bubble"><img src="bubble06.png" width="100%"/></div>
+            
+            <div class = "col col-md-4" style="margin-left:70%">
+                    <div class ="g bubble"><img src="bubble07.png" width="100%"/></div>
+            </div>
+        </div>
 </body> 
 <script>
-
 $(document).ready(function(){
     $('.a').animate({opacity:0.8}, "fast");
     $('.b').animate({opacity:0.8}, "fast");
     $('.c').animate({opacity:0.8}, "fast");
     $('.d').animate({opacity:0.8}, "fast");
+    $('.e').animate({opacity:0.8}, "fast");
+    $('.f').animate({opacity:0.8}, "fast");
+    $('.g').animate({opacity:0.8}, "fast");
     animateDiv();
     
 });
@@ -88,7 +101,6 @@ function makeNewPosition(){
     var s = Math.floor((Math.random() * 150)+100);
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
-    
     return [nh,nw,s];    
     
 }
@@ -102,6 +114,12 @@ function animateDiv(){
     $('.c').animate({ top: newqc[0], left: newqc[1] ,width: newqc[2],height: newqc[2], opacity:0.8}, 5000);
     var newqd = makeNewPosition();
     $('.d').animate({ top: newqd[0], left: newqd[1] ,width: newqd[2],height: newqd[2], opacity:0.8}, 5000);
+    var newqe = makeNewPosition();
+    $('.e').animate({ top: newqe[0], left: newqe[1] ,width: newqe[2],height: newqe[2], opacity:0.8}, 5000);
+    var newqf = makeNewPosition();
+    $('.f').animate({ top: newqf[0], left: newqf[1] ,width: newqf[2],height: newqf[2], opacity:0.8}, 5000);
+    var newqg = makeNewPosition();
+    $('.g').animate({ top: newqg[0], left: newqg[1] ,width: newqg[2],height: newqg[2], opacity:0.8}, 5000);
     animateDiv();
 };
 </script>
