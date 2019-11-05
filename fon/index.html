@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet">
+    <title>My love</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<style>
+body{
+    font-family: 'Mitr', sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+    text-shadow: 3px 2px black;
+    color:white;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-image:url('bg1536x900.jpg');
+    
+}
+@media only screen and (max-width: 413px){
+    body{
+      background-image:url('bg414x896.jpg');
+    }
+}
+
+.textbox{
+    text-align: center;
+    width:100%;
+    margin-top: 20%;
+    position: absolute;
+    z-index:99;
+}
+div.bubble{
+    z-index: -2;
+    overflow: hidden;
+    width: 250px;
+    margin-top: 0%;
+    position: fixed;
+}
+
+
+
+</style>
+<body>
+    <center>
+    <div class = "textbox">
+    <div id ="Month"></div>
+    <div id ="Date"></div>
+    </center>
+    </div>
+    <div class ="a bubble"><img src="bubble01.png" width="250px"/></div>
+    <div class ="b bubble"><img src="bubble02.png" width="250px"/></div>
+    <div class ="c bubble"><img src="bubble03.png" width="250px"/></div>
+    <div class ="d bubble"><img src="bubble04.png" width="250px"/></div>
+</body> 
+<script>
+
+$(document).ready(function(){
+    $('.a').animate({opacity:0.8}, "fast");
+    $('.b').animate({opacity:0.8}, "fast");
+    $('.c').animate({opacity:0.8}, "fast");
+    $('.d').animate({opacity:0.8}, "fast");
+    animateDiv();
+    
+});
+function makeNewPosition(){
+    var h = $(window).height() - 50;
+    var w = $(window).width() - 50;
+    
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    
+    return [nh,nw];    
+    
+}
+
+function animateDiv(){
+    var newqa = makeNewPosition();
+    $('.a').animate({ top: newqa[0], left: newqa[1] ,opacity:0.8}, 5000);
+    var newqb = makeNewPosition();
+    $('.b').animate({ top: newqb[0], left: newqb[1] ,opacity:0.8}, 5000);
+    var newqc = makeNewPosition();
+    $('.c').animate({ top: newqc[0], left: newqc[1] ,opacity:0.8},5000);
+    var newqd = makeNewPosition();
+    $('.d').animate({ top: newqd[0], left: newqd[1] ,opacity:0.8}, 5000);
+    animateDiv();
+};
+</script>
+<script>
+    var start = new  Date("Sep 18, 2019").getTime()
+    var monthstart = new Date("Sep 18,2019").getMonth();
+    var yearstart = new Date("Sep 18,2019").getFullYear();
+    var year = new Date().getFullYear();
+    var absyear = year - yearstart;
+    var month = new Date().getMonth() ;
+    var date = new Date().getDate();4
+    if(month<=8 && date<18){
+        absyear -=1;
+    }
+    var absmonth;
+    if(date >=18){
+        absmonth = month-monthstart;
+    }
+    else{
+        absmonth = month-monthstart-1;    
+    }
+    if(absmonth <= 0 ){
+        absmonth +=12;
+    }
+    var now = new Date().getTime();
+        var distance = now -start;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("Date").innerHTML ="เราคบกันมาแล้ว "+ days+" days "+hours + " hours "+minutes + " minutes "+ seconds + " seconds "; 
+        document.getElementById("Month").innerHTML = absyear +" Y "+ absmonth + " M";
+    
+    var x = setInterval(function(){
+        var year = new Date().getFullYear();
+        var absyear = year - yearstart;
+        var month = new Date().getMonth() ;
+        var date = new Date().getDate();4
+        if(month<=8 && date<18){
+            absyear -=1;
+        }
+        var absmonth;
+        if(date >=18){
+            absmonth = month-monthstart;
+        }
+        else{
+            absmonth = month-monthstart-1;    
+        }
+        if(absmonth <= 0 ){
+            absmonth +=12;
+        }
+        document.getElementById("Month").innerHTML = absyear +" Y "+ absmonth + " M";
+        var now = new Date().getTime();
+        var distance = now -start;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("Date").innerHTML ="เราคบกันมาแล้ว "+ days+" days "+hours + " hours "+minutes + " minutes "+ seconds + " seconds "; 
+    },1000);
+    
+    </script>
+
+</html>
