@@ -57,41 +57,45 @@ div.bubble{
     </div>
     <div class = "row">
         <div class = "col col-md-6">
-        <div class ="a bubble"><img src="bubble01.png" width="100%"/></div>
+        <div class ="a bubble"><img id="i1" src="" width="100%"/></div>
         </div>
         <div class = "col col-md-6" style="margin-left:70%">
-        <div class ="b bubble"><img src="bubble02.png" width="100%"/></div>
+        <div class ="b bubble"><img id="i2" src="" width="100%"/></div>
         </div>
     </div>
      <div class = "row" style ="margin-top:20%">
         <div class = "col col-md-6">
-        <div class ="c bubble"><img src="bubble03.png" width="100%"/></div>
+        <div class ="c bubble"><img id="i3" src="" width="100%"/></div>
         </div>
         <div class = "col col-md-6" style="margin-left:70%">
-        <div class ="d bubble"><img src="bubble04.png" width="100%"/></div>
+        <div class ="d bubble"><img id="i4" src="" width="100%"/></div>
         </div>
     </div>
     <div class = "row" style ="margin-top:20%">
             <div class = "col col-md-4">
-            <div class ="e bubble"><img src="bubble05.png" width="100%"/></div>
+            <div class ="e bubble"><img id="i5" src="" width="100%"/></div>
             </div>
-            <div class = "col col-md-4" style="margin-left:35%">
-            <div class ="f bubble"><img src="bubble06.png" width="100%"/></div>
-            
             <div class = "col col-md-4" style="margin-left:70%">
-                    <div class ="g bubble"><img src="bubble07.png" width="100%"/></div>
-            </div>
+            <div class ="f bubble"><img id="i6" src="" width="100%"/></div>
+            
+            
         </div>
 </body> 
 <script>
 $(document).ready(function(){
+    var imgi = randomPic();
+    document.getElementById("i1").src = ""+imgi[0];
+    document.getElementById("i2").src = ""+imgi[1];
+    document.getElementById("i3").src = ""+imgi[2];
+    document.getElementById("i4").src = ""+imgi[3];
+    document.getElementById("i5").src = ""+imgi[4];
+    document.getElementById("i6").src = ""+imgi[5];
     $('.a').animate({opacity:0.8}, "fast");
     $('.b').animate({opacity:0.8}, "fast");
     $('.c').animate({opacity:0.8}, "fast");
     $('.d').animate({opacity:0.8}, "fast");
     $('.e').animate({opacity:0.8}, "fast");
     $('.f').animate({opacity:0.8}, "fast");
-    $('.g').animate({opacity:0.8}, "fast");
     animateDiv();
     
 });
@@ -104,7 +108,21 @@ function makeNewPosition(){
     return [nh,nw,s];    
     
 }
-
+var img1 =['bubble01.png','bubble07.png'];
+var img2 =['bubble02.png','bubble08.png'];
+var img3 =['bubble03.png','bubble09.png'];
+var img4 =['bubble04.png','bubble10.png'];
+var img5 =['bubble05.png'];
+var img6 =['bubble06.png'];
+function randomPic(){
+    var a1 = img1[((Math.floor(Math.random()*100))%img1.length)];
+    var b1 = img2[((Math.floor(Math.random()*100))%img2.length)];
+    var c1 = img3[((Math.floor(Math.random()*100))%img3.length)];
+    var d1 = img4[((Math.floor(Math.random()*100))%img4.length)];
+    var e1 = img5[((Math.floor(Math.random()*100))%img5.length)];
+    var f1 = img6[((Math.floor(Math.random()*100))%img6.length)];
+    return [a1,b1,c1,d1,e1,f1];
+}
 function animateDiv(){
     var newqa = makeNewPosition();
     $('.a').animate({ top: newqa[0], left: newqa[1] ,width: newqa[2],height: newqa[2], opacity:0.8}, 5000);
@@ -120,6 +138,7 @@ function animateDiv(){
     $('.f').animate({ top: newqf[0], left: newqf[1] ,width: newqf[2],height: newqf[2], opacity:0.8}, 5000);
     var newqg = makeNewPosition();
     $('.g').animate({ top: newqg[0], left: newqg[1] ,width: newqg[2],height: newqg[2], opacity:0.8}, 5000);
+    
     animateDiv();
 };
 </script>
@@ -178,8 +197,18 @@ function animateDiv(){
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
         document.getElementById("Date").innerHTML ="เราคบกันมาแล้ว "+ days+" days "+hours + " hours "+minutes + " minutes "+ seconds + " seconds "; 
     },1000);
+    var y = setInterval(function(){
+        var imgi = randomPic();
+        document.getElementById("i1").src = ""+imgi[0];
+        document.getElementById("i2").src = ""+imgi[1];
+        document.getElementById("i3").src = ""+imgi[2];
+        document.getElementById("i4").src = ""+imgi[3];
+        document.getElementById("i5").src = ""+imgi[4];
+        document.getElementById("i6").src = ""+imgi[5];
+    },5000)
     
     </script>
 
