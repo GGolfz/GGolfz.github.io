@@ -142,14 +142,28 @@ function animateDiv(){
     
     animateDiv();
 };
-function sendLine(message){
-    var options={
-        "method" : "post",
-        "payload" : "message= " + message,
-        "headers" : {"Authorization" : "Bearer" + "qAXkakZXV757jCoL1qbDKIlQLdLSnn1topMPJ6HX038"}
-    };
-    UrlFetchApp.fetch("https://notify-api.line.me/api/notify",options);
-}
+
+const request = require('request')
+
+request({
+  method: 'POST',
+  uri: 'https://notify-api.line.me/api/notify',
+  header: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  auth: {
+    bearer: 'qAXkakZXV757jCoL1qbDKIlQLdLSnn1topMPJ6HX038', //token
+  },
+  form: {
+    message: "ทดสอบ", //ข้อความที่จะส่ง
+  },
+}, (err, httpResponse, body) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(body)
+  }
+})
 </script>
 <script>
     var start = new  Date("Sep 18, 2019 21:46:03").getTime()
