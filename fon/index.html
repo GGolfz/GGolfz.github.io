@@ -197,7 +197,13 @@ function animateDiv(){
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
+        var h1 = new Date().getHours();
+        if(h1>=6 && h1<18){
+            document.getElementById("Date").style.color="blue";
+        }
+        else{
+            document.getElementById("Date").style.color="white";
+        }
         document.getElementById("Date").innerHTML ="เราคบกันมาแล้ว "+ days+" days "+hours + " hours "+minutes + " minutes "+ seconds + " seconds "; 
     },1000);
     var y = setInterval(function(){
