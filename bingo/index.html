@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bingo</title>
+</head>
+<body onload="createTable()">
+    <table border="1">
+        <tr>
+            <td id ="sq0">&nbsp;</td>
+            <td id ="sq1">&nbsp;</td>
+            <td id ="sq2">&nbsp;</td>
+            <td id ="sq3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id ="sq4">&nbsp;</td>
+            <td id ="sq5">&nbsp;</td>
+            <td id ="sq6">&nbsp;</td>
+            <td id ="sq7">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id ="sq8">&nbsp;</td>
+            <td id ="sq9">&nbsp;</td>
+            <td id ="sq10">&nbsp;</td>
+            <td id ="sq11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id ="sq12">&nbsp;</td>
+            <td id ="sq13">&nbsp;</td>
+            <td id ="sq14">&nbsp;</td>
+            <td id ="sq15">&nbsp;</td>
+        </tr>
+    </table>
+    <button onclick="createTable()" id="rand">random again</button>
+    <button onclick="start()" id = "start">start</button>
+    <div id = "play">
+        <input type="text" id ="bing">
+        <button onclick="check()">submit</button>
+    </div>
+    <div id = "win">
+        Congratulations !  You Won !
+    </div>
+    <div id = "num">
+        The number that already appear is 
+    </div>
+</body>
+<script>
+    function createTable(){
+        document.getElementById("play").style.display = "none";
+        document.getElementById("num").style.display = "none";
+        document.getElementById("win").style.display = "none";
+        var chk = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        for(var x=0;x<16;x++){   
+            a = Math.floor(Math.random() * 35) + 1
+            var check = false;
+            while(!check){
+                check = true;
+                for(var i = 0 ;i<16;i++){
+                    if(a===chk[i]){
+                        a = Math.floor(Math.random() * 35) + 1;
+                        check = false;
+                    }
+                }
+            }
+            chk[x]=a;
+            var id1 = "sq"+x;
+            document.getElementById(id1).innerHTML = a;
+        }
+    }
+    function start(){
+        document.getElementById("rand").style.display = "none";
+        document.getElementById("start").style.display = "none";
+        document.getElementById("play").style.display = "block"; 
+        document.getElementById("num").style.display = "block";      
+    }
+    function check(){
+        var n = document.getElementById("bing").value;
+        document.getElementById("bing").value = "";
+        for(var i = 0 ;i<16;i++){
+            var id1 = "sq"+ i;
+            var x = document.getElementById(id1).innerHTML;
+            
+            if(n===x){
+            document.getElementById(id1).innerHTML = "X";
+            if(checkBingo()){
+            document.getElementById("num").innerHTML += n; 
+            document.getElementById("play").style.display = "none";
+            document.getElementById("win").style.display = "block";
+            }
+            else{
+            document.getElementById("num").innerHTML += n + ", "; 
+            }
+            break;
+            }
+        }
+        
+    }
+    function checkBingo(){
+        var x = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        for(var i = 0 ;i<4;i++){
+            for(var j = 0 ;j<4;j++){
+                var id = "sq" + (4*i+j);
+                x[i][j] = document.getElementById(id).innerHTML;
+            }
+        }
+        for(var i = 0 ;i<4;i++){
+            if(x[i][0]===x[i][1] && x[i][1]===x[i][2] && x[i][2]===x[i][3]){
+                return true;
+            }
+            if(x[0][i]===x[1][i] && x[1][i]===x[2][i] && x[2][i]===x[3][i]){
+                return true;
+            }
+        }
+        if(x[0][0]===x[1][1] && x[1][1]===x[2][2] && x[2][2]===x[3][3]){
+            return true;
+        }
+        if(x[0][3]===x[1][2] && x[1][2]===x[2][1] && x[2][1]===x[3][0]){
+            return true;
+        }
+
+    }
+
+</script>
+</html>
