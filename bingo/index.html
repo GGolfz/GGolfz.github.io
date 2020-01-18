@@ -6,8 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bingo</title>
 </head>
-<body onload="createTable()">
+<style>
+    table{
+        text-align: center;
+        font-size: 30pt;
+        margin-top:20px;
+        margin-bottom:20px;
+        border-color:black;
+        border-style: solid;
+        border-width: 5px;
+        border-collapse: collapse;
+    }
+    html{
+        height: 100%;
+    }
+    body{
+        font-size: 20pt;
+        margin-left:20px;
+        background: linear-gradient(to bottom, #0099ff 0%, #99ff99 100%);    
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    button{
+        font-size: 14pt;
+    }
+    input{
+        font-size: 14pt;
+    }
+    #num{
+        margin-top:10pt;
+    }
+    #game{
+        display:none;
+        margin-top:15%;
+    }
+    #login{
+        margin-top:30%;
+    }
+</style>
+<body>
+    <center>
+    <div id = "login">
+        Team name <input type="text" id ="team"><br>
+        <button onclick="login()">submit</button>
+    </div>
+    </center>
+    <center>
+    <div id ="game">
+        <div id ="name"></div>
     <table border="1">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
         <tr>
             <td id ="sq0">&nbsp;</td>
             <td id ="sq1">&nbsp;</td>
@@ -33,6 +87,7 @@
             <td id ="sq15">&nbsp;</td>
         </tr>
     </table>
+    
     <button onclick="createTable()" id="rand">random again</button>
     <button onclick="start()" id = "start">start</button>
     <div id = "play">
@@ -42,15 +97,25 @@
     <div id = "win">
         Congratulations !  You Won !
     </div>
+
     <div id = "num">
         The number that already appear is 
     </div>
+</center>
+</div>
 </body>
 <script>
+    function login(){
+        document.getElementById("game").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        createTable();
+    }
     function createTable(){
+        var name = document.getElementById("team").value;
         document.getElementById("play").style.display = "none";
         document.getElementById("num").style.display = "none";
         document.getElementById("win").style.display = "none";
+        document.getElementById("name").innerHTML = "Team : "+name;
         var chk = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         for(var x=0;x<16;x++){   
             a = Math.floor(Math.random() * 35) + 1
