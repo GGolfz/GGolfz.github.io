@@ -177,7 +177,7 @@ function animateDiv(){
         var absyear = year - yearstart;
         var month = new Date().getMonth() ;
         var date = new Date().getDate();
-        if(month<=8 && date<18){
+        if(month<=8 || date<18){
             absyear -=1;
         }
         var absmonth;
