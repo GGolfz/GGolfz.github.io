@@ -1,0 +1,20 @@
+{% extends 'product/base.html' %}
+{% block content %}
+<div class="row">
+    {% for car in benz %}
+    <div class="container">
+        <div class="col-md-4">
+            <img src = "{{car.product_image}}"> 
+        </div>
+        <div class="col-md-4">
+            <h3>{{car.product_name}}</h3>
+            <p>{{car.product_price}}</p>
+            {% if car.product_detail %}
+            <p>{{car.product_detail}}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% endfor %}
+</div>
+{% endblock content %}
