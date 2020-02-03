@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IT3K #17</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+</head>
+<style>
+    .flexbox{
+        margin:0;
+        padding:0;
+        display: flex;
+        flex-flow:column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background:url("https://image.freepik.com/free-vector/black-background-with-light-bulb_118124-1005.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw auto;
+        opacity: 1;
+        transition: opacity 3s; 
+    }
+    body{
+        margin:0;
+        padding: 0;
+        font-family: 'PT Sans', sans-serif;
+    }
+    .title{
+        color:white;
+        font-size: 60pt;
+        text-shadow: 2px 2px #3b3b3b;
+        margin-bottom: 0;
+    }
+    .text{
+        color:white;
+        font-size: 40pt;
+        text-shadow: 2px 2px #3b3b3b;
+    }
+    .flex2{
+        display:none;
+        opacity: 0;
+        transition: opacity 5s;
+    }
+    .flex3{
+        display:none;
+        background: blue;
+        width:80vw;
+        height: 80vh;
+        padding-left:10vw ;
+        padding-right:10vw;
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        color:white;
+        font-size: 32px;
+    }
+    #pic{
+        width:100vw;
+        height: 100vh;
+    }
+    #pic2{
+        width:100vw;
+        height:100vh;
+        display:none;
+    }
+</style>
+<script>
+    var x = 10;
+    var y = setInterval(function(){
+        document.getElementById("countdown").innerHTML = "0d : 0h : 0m : "+x+"s";
+        x-=1;
+        if(x<0){
+            clearInterval(y);
+            start();
+        }
+    },1000)
+    function start(){
+        var x = document.getElementsByClassName("flexbox"); 
+        x[0].style.opacity = 0;
+        setTimeout(function(){
+            x[0].style.display = "none";
+            var y = document.getElementsByClassName("flex2");
+            y[0].style.display = "block";
+            y[0].style.opacity = 0.5;
+            setTimeout(function(){
+                y[0].style.opacity = 1;
+                setTimeout(function(){
+                    var a1 = document.getElementById("pic");
+                    var a2 = document.getElementById("pic2");
+                        a1.style.display = "none";
+                        a2.style.display = "block";
+                    setTimeout(function(){
+                        end();
+                    },5000);
+                },3000);
+            },1000)
+        },3500);
+        
+    }
+    function end(){
+        var x = document.getElementsByClassName("flex3");
+        x[0].style.display = "block";
+        var y = document.getElementsByClassName("flex2");
+        y[0].style.display = "none";
+        setTimeout(function(){
+        var x = document.getElementsByClassName("flex3");
+        x[0].style.display = "none";
+        var y = document.getElementsByClassName("flex2");
+        y[0].style.display = "block";
+        setTimeout(function(){
+            y[0].style.opacity = "0";
+            setTimeout(function(){
+                window.open('','_self','');
+                window.close();
+            },5000);
+        },10000)
+        },2500)
+    }
+</script>
+<body>
+    <div class="flexbox">
+        <h1 class="title">IT 3KINGS #17</h1>
+        <h2 class="text" id ="countdown">0d : 0h : 0m : 10s</h2>
+    </div>
+    <div class="flex2">
+        <img src="it3k.gif" id ="pic">
+        <img src="it3k.png" id ="pic2">
+    </div>
+    <div class="flex3">
+        A problem has been detected and Windows has been shut down to prevent damage 
+        to your computer.
+        <br>
+        CRITICAL_SERVICE_FAILED
+        <br>
+        If this is the first time you've seen this Stop error screen, 
+        restart your computer. 
+        <br>
+        If this screen appears again, follow these steps:
+        <br>
+        Check to make sure any new hardware or software is properly installed.
+        <br>
+        If this is a new installation, ask your hardware or software manufacturer
+        for any Windows updates you might need.
+        <br>
+        If problems continue, disable or remove any newly installed hardware 
+        or software. Disable BIOS memory options such as caching or shadowing.
+        <br>
+        If you need to use Safe Mode to remove or disable components, restart
+        your computer, press F8 to select Advanced Startup Options, and then
+        select Safe Mode.
+        <br>
+        Technical Information:
+        <br>
+        *** STOP: 0x0000005A (0x00000001, 0x00000001, 0x00000000, 0x00000000)
+    </div>
+</body>
+</html>
