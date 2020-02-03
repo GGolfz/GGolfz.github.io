@@ -26,6 +26,7 @@
         margin:0;
         padding: 0;
         font-family: 'PT Sans', sans-serif;
+        background: black;
     }
     .title{
         color:white;
@@ -57,7 +58,7 @@
         width:100vw;
         height: 100vh;
         opacity: 0;
-        transition: opacity 3.5s;
+        transition: opacity 6s;
     }
     #pic2{
         width:100vw;
@@ -85,7 +86,9 @@
             var y = document.getElementsByClassName("flex2");
             y[0].style.display = "block";
             var y1 = document.getElementById("pic");
-            y1.style.opacity = 1;
+            y1.style.opacity = 0.5;
+            setTimeout(function(){
+                y1.style.opacity = 1;
                 setTimeout(function(){
                     var a1 = document.getElementById("pic");
                     var a2 = document.getElementById("pic2");
@@ -94,7 +97,8 @@
                     setTimeout(function(){
                         end();
                     },5000);
-                },3000);
+                },2000);
+            },1000)
         },3500);
         
     }
