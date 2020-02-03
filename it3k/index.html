@@ -40,8 +40,6 @@
     }
     .flex2{
         display:none;
-        opacity: 0;
-        transition: opacity 2s;
     }
     .flex3{
         display:none;
@@ -58,6 +56,8 @@
     #pic{
         width:100vw;
         height: 100vh;
+        opacity: 0;
+        transition: opacity 2s;
     }
     #pic2{
         width:100vw;
@@ -82,9 +82,11 @@
             x[0].style.display = "none";
             var y = document.getElementsByClassName("flex2");
             y[0].style.display = "block";
-            y[0].style.opacity = 0.5;
+            var y1 = document.getElementById("pic");
+
+            y1.style.opacity = 0.5;
             setTimeout(function(){
-                y[0].style.opacity = 1;
+                y1.style.opacity = 1;
                 setTimeout(function(){
                     var a1 = document.getElementById("pic");
                     var a2 = document.getElementById("pic2");
