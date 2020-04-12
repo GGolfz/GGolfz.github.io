@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="index.js"></script>
+<body>
+    <div class="card">
+        <h1>Roman converter</h1>
+            <input type="text" onchange="check(this.value)"><br>
+            Answer : &nbsp;
+            <span id="answer"></span>
+    </div>
+    <div class="card">
+        <h1>Unit converter</h1>
+        <input type="text" onchange="convert(this.value)"><br>
+        Grain : <span id="grain"></span><br>
+        Fl.oz : <span id="fl"></span>
+    </div>
+    <div class="card">
+        <h1>Significant Figure</h1>
+        <h3>Count</h3>
+        <input type="text" onchange="countsig2(this.value)"><br>
+        significant : <span id="count"></span>
+        <h3>Calculate</h3>
+        <div>
+        Number 1 : <input type="text" id="num1"><br>
+        Number 2 : <input type="text" id="num2">
+        </div>
+        <br>
+        <div>
+            <button onclick="add()">+</button>
+            <button onclick="sub()">-</button>
+            <button onclick="mul()">*</button>
+            <button onclick="div()">/</button>
+            <span>Answer : </span> <span id="sig"></span>
+        </div>
+    </div>
+</body>
+<style>
+    .card{
+        margin:5%;
+    }
+
+</style>
+</html>
